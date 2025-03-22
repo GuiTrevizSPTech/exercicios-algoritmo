@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_inicio_intervalo">Digite um número inicial:</label>
+    <input type="number" id="ipt_inicio_intervalo">
+
+    <label for="ipt_fim_intervalo">Digite um valor final:</label>
+    <input type="number" id="ipt_fim_intervalo">
+
+    <button onclick="intervaloPares()">S2 pares</button>
+
+    <p id="res"></p>
+</body>
+<script>
+    function intervaloPares() {
+        var initInterval = Number(ipt_inicio_intervalo.value);
+        var endInterval = Number(ipt_fim_intervalo.value);
+
+        if (initInterval < endInterval) {
+            while (initInterval <= endInterval) {
+                if (initInterval % 2 == 0) {
+                    res.innerHTML += `${initInterval}<br>`;
+                }
+                initInterval++;
+            }
+        } else {
+            res.innerHTML = `O intervalo deve ser crescente.`;
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Nº entre 0 e 200" id="ipt_num">
+
+    <button onclick="viva()">Viva o 7!</button>
+
+    <p id="res"></p>
+</body>
+<script>
+    function viva() {
+        var count = 0;
+        var num = Number(ipt_num.value);
+
+        if (num >= 0 && num <= 200) {
+            while (count <= num) {
+                if (count % 7 == 0) {
+                    res.innerHTML += `${count}<br>`;
+                }
+                count++;
+            }
+        } else {
+            res.innerHTML = `Escreva um número correto!!!`;
+        }
+    }
+</script>
+</html>

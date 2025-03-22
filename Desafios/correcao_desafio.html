@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+
+<body>
+    <label>Quantidade:</label>
+    <input type="number" id="ipt_qtd_produtos">
+    <label>Valor:</label>
+    <input type="number" id="ipt_valor_total">
+    <label>É VIP?</label>
+    <input type="checkbox" id="chk_cliente_vip">
+
+    <button onclick="analisar()">Analisar</button>
+
+    <div id="div_resultado"></div>
+</body>
+<script>
+    function analisar() {
+        var qtdProdutos = Number(ipt_qtd_produtos.value);
+        var valorTotal = Number(ipt_valor_total.value);
+        var vip = chk_cliente_vip.checked;
+        var qtdDesconto = 0;
+        var qtdRecompensa = 0;
+
+        // descontos
+        if ((qtdProdutos > 10 && valorTotal > 100) && vip) {
+            qtdDesconto += 15
+        }
+
+        if ((qtdProdutos > 10 && valorTotal > 500) || vip) {
+            qtdDesconto += 10;
+        }
+
+        if (((qtdProdutos >= 6 && qtdProdutos <= 10) && valorTotal> 200) || vip) {
+            qtdDesconto += 5;
+        }
+
+        // recompensa
+
+        if ((qtdProdutos > 5 && valorTotal > 200) || vip) {
+            qtdRecompensa += 50;
+        }
+
+        if (qtdProdutos > 10 && valorTotal > 500) {
+            qtdRecompensa += 100;
+        }
+
+        if (qtdProdutos <= 5) {
+            qtdDesconto = 0;
+            qtdRecompensa = 0;
+        }
+
+        // mensagem
+        div_resultado.innerHTML = `
+        Seu desconto: ${qtdDesconto}%
+        Sua recompensa: ${qtdRecompensa}.`;
+    }
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="cabal()">Números Cabalísticos</button>
+    <p id="res"></p>
+</body>
+<script>
+    function cabal() {
+        count = 1;
+        while (count <= 30) {
+            if (count != 3 && count != 4 && count != 7 && count != 10 && count != 12) {
+                res.innerHTML += `${count}<br>`;
+                console.log(`${count}`)
+            }
+            count++;
+        }
+    }
+</script>
+</html>
