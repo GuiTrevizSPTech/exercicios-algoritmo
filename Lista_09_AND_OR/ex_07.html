@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Autenticação de Segurança: Acesso ao Banco Melete</h1>
+
+    <label for="ipt_login">Login:</label>
+    <input type="text" id="ipt_login">
+
+    <label for="ipt_senha">Senha:</label>
+    <input type="password" id="ipt_senha">
+
+    <label for="ipt_informacao_pessoal">Informação Pessoal:</label>
+    <input type="text" id="ipt_informacao_pessoal">
+
+    <button onclick="autenticacao()" id="btn_autenticar">Autenticar</button>
+
+    <p id="res"></p>
+    <p id="tentativas" style="color: red;"></p>
+</body>
+<script>
+    var contador = 3;
+
+    function autenticacao() {
+        var login = ipt_login.value;
+        var senha = ipt_senha.value;
+        var infoPessoal = ipt_informacao_pessoal.value;
+        var usuario = true;
+
+        if (login == 'ana' && senha == 'braga' && (infoPessoal == '1949' || infoPessoal == 'louro josé')) {
+            res.innerHTML = `Usuário autenticado`;
+            res.style.color = 'green';
+            tentativas.innerHTML = ``;
+        } else {
+            contador--;
+            if (contador > 0) {
+                tentativas.innerHTML = `Falha na autenticação você ainda tem ${contador}`;
+                res.innerHTML = ``;
+            } else {
+                res.innerHTML = `Usuário BLOQUEADO! Procure o gerente!`
+                res.style.color = 'red';
+                tentativas.innerHTML = ``;
+                btn_autenticar.disabled = true;
+
+            }
+
+        }
+
+    }
+</script>
+
+</html>

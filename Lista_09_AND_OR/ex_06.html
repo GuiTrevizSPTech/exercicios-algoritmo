@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Desempenho Escolar: O Aluno Foi Aprovado?</h1>
+
+    <label for="ipt_nota_aluno">Nota do aluno:</label>
+    <input type="number" id="ipt_nota_aluno">
+
+    <label for="ipt_freq_aluno">Frequência do aluno:</label>
+    <input type="number" id="ipt_freq_aluno">
+
+    <button onclick="analisar()">Analisar aluno</button>
+
+    <div id="div_res"></div>
+</body>
+<script>
+    function analisar() {
+        var nota = Number(ipt_nota_aluno.value);
+        var freq = Number(ipt_freq_aluno.value);
+
+        if (nota >= 0 && nota <= 10 /*&& (freq >= 0 && freq <= 100)*/) {
+            if (freq >= 0 && freq <= 100) {
+                if (freq >= 75) {
+                    div_res.innerHTML = `<p>Aluno aprovado por frequência.</p>`;
+
+                    if (nota < 6) {
+                        div_res.innerHTML += `<p>Aluno ficou abaixo da média.</p>`;
+                    } else if (nota >= 6 && nota <= 8) {
+                        div_res.innerHTML += `<p>Aluno ficou na média.</p>`;
+                    } else {
+                        div_res.innerHTML += `<p>Aluno acima da média.</p>`;
+                    }
+                } else {
+                    div_res.innerHTML = `<p style="color: red">Aluno reprovado por frequência.</p>`;
+                }
+
+            } else {
+                div_res.innerHTML = ``;
+                alert(`Onde já se viu a frequência maior que 100 e menor que 0?!`);
+            }
+        } else {
+            div_res.innerHTML = ``;
+            alert(`Onde já se viu uma nota maior que 10 e menor que 0?!`);
+        }
+    }
+</script>
+
+</html>

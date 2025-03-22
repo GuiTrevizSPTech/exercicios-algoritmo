@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+
+    <label for="ipt_tamanho_tela_pol">Tamanho da tela (em polegadas):</label>
+    <input type="number" name="" id="ipt_tamanho_tela_pol">
+
+    <label>Qual cor deseja?:</label>
+    <input type="radio" name="cores" id="rad_preto">Preto
+    <input type="radio" name="cores" id="rad_prata">Prata
+    <input type="radio" name="cores" id="rad_azul">Azul
+    <input type="radio" name="cores" id="rad_vermelho">Vermelho
+
+    <button onclick="preferencia()">Será que ele gosta?</button>
+
+    <div id="resposta"></div>
+</body>
+<script>
+    function preferencia() {
+        var tamanhoTela = Number(ipt_tamanho_tela_pol.value);
+        var preto = rad_preto.checked;
+        var prata = rad_prata.checked;
+        var azul = rad_azul.checked;
+        var vermelho = rad_vermelho.checked;
+
+        if (tamanhoTela > 6.5 && (preto || prata)) {
+            resposta.innerHTML = `<img src="https://carreiraefelicidade.com.br/wp-content/uploads/2016/10/o-que-e-ser-feliz-no-trabalho.jpg" alt="Pessoa feliz">`;
+        } else {
+            resposta.innerHTML = `<img src="https://projetocolabora.com.br/wp-content/uploads/2018/09/Felicidade-6.jpg" alt="Pessoa triste">`;
+        }
+    }
+</script>
+</html>
