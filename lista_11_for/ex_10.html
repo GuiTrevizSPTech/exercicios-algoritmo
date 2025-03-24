@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" placeholder="Quantas voltas ele dará?" id="ipt_qtd_voltas">
+
+    <button onclick="corrida()">Iniciar Corrida!</button>
+
+    <p id="res"></p>
+</body>
+<script>
+    function corrida() {
+        var qtdVoltas = Number(ipt_qtd_voltas.value);
+        var count = 0;
+
+        while (count < qtdVoltas) {
+            count++;
+            res.innerHTML += `Carro dando a ${count}ª volta<br>`;
+        }
+        if (count == qtdVoltas) {
+            res.innerHTML += `Corrida finalizada!`;
+        }
+    }
+</script>
+
+</html>
