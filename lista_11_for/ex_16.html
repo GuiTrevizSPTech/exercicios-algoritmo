@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_qtd_deposito">Quantos depósitos você fez?</label>
+    <input type="number" name="" id="ipt_qtd_deposito">
+
+    <label for="ipt_valor_deposito">Valor do(s) depósito(s)?</label>
+    <input type="number" name="" id="ipt_valor_deposito">
+
+    <button onclick="acompanhar()">Acompanhar grana</button>
+
+    <p id="res"></p>
+</body>
+<script>
+    var grana = 0;
+
+    function acompanhar() {
+        var qtdDep = Number(ipt_qtd_deposito.value);
+        var valorDep = Number(ipt_valor_deposito.value);
+
+        for (var i = 1; i <= qtdDep; i++) {
+            grana += valorDep;
+            res.innerHTML += `${i}º Mês: R$${grana}<br>`;
+        }
+
+        res.innerHTML += `Total guardado: R$${grana}`;
+    }
+</script>
+
+</html>

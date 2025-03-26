@@ -24,16 +24,14 @@
         var endInterval = Number(ipt_fim_intervalo.value);
 
         if (initInterval < endInterval) {
-            while (initInterval <= endInterval) {
+            for (initInterval; initInterval <= endInterval; initInterval++) {
                 if (initInterval % 2 == 0) {
                     res.innerHTML += `${initInterval}<br>`;
                 }
-                initInterval++;
             }
         } else {
             res.innerHTML = `O intervalo deve ser crescente.`;
         }
-
     }
 </script>
 

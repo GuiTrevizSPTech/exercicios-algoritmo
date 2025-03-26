@@ -19,13 +19,11 @@
         var qtdVoltas = Number(ipt_qtd_voltas.value);
         var count = 0;
 
-        while (count < qtdVoltas) {
-            count++;
-            res.innerHTML += `Carro dando a ${count}ª volta<br>`;
+        for (var i = 1; i <= qtdVoltas; i++) {
+            res.innerHTML += `Carro dando a ${i}ª volta<br>`;
+            
         }
-        if (count == qtdVoltas) {
-            res.innerHTML += `Corrida finalizada!`;
-        }
+        res.innerHTML += `Corrida finalizada!`;
     }
 </script>
 

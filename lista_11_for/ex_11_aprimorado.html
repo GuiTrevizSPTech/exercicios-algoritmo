@@ -20,13 +20,6 @@
     <div id="div_frase"></div>
 </body>
 <script>
-    
-
-    // while (i <= 4) {
-    //     console.log(`${i}. valor`)
-    //     div_frase.innerHTML += `<p>Número: ${i}</p>`;
-    //     i++;
-    // }
     function limpar() {
         div_frase.style.display = 'none';
         button.style.display = 'none';
@@ -43,15 +36,18 @@
 
         button.innerHTML = `<button onclick="limpar()">limpar</button>`;
 
-        
-        while (i <= qtdVezes) {
+        for (var i = 0; i <= qtdVezes; i++) {
             var multi = (num * i);
-            div_frase.innerHTML += `<p>${num} X ${i} = ${multi}</p>`;
-            i++;
+
+            if (multi % 2 == 0) {
+                div_frase.innerHTML += `<p style="color: blue;">${num} X ${i} = ${multi}</p>`;
+            } else {
+                div_frase.innerHTML += `<p style="color: red;">${num} X ${i} = ${multi}</p>`;
+            }
+            
+            
         }
     }
-
-
 </script>
 
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_qtd_coca">Quantas garrafinhas de cocas você já tomou em sua vida?</label>
+    <input type="number" id="ipt_qtd_coca">
+
+    <button onclick="analisar()">Ver a quantidade</button>
+    <div id="resposta"></div>
+</body>
+<script>
+    function analisar() {
+        var qtdCoca = Number(ipt_qtd_coca.value);
+
+        for (var i = 1; i <= qtdCoca; i++) {
+            resposta.innerHTML += `<img style="height: 100px; width: 100px;" src="https://mercantilnovaera.vtexassets.com/arquivos/ids/198196/Refrigerante-COCA-COLA-Zero-Garrafinha-200ml.jpg?v=637874592012630000" alt="Imagem de garrafinha de coca zero">`;
+            
+        }
+    }
+</script>
+</html>

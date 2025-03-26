@@ -15,10 +15,8 @@
     function papagaio() {
         var num = Number(ipt_num.value);
         var frase = ipt_frase.value;
-        var count = 0;
 
-        while (count < num) {
-            count++;
+        for (var i = 1; i < num; i++) {
             alert(`${frase}`);
         }
     }

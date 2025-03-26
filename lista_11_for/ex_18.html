@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_qtd_deposito">Quantos depósitos você fez?</label>
+    <input type="number" name="" id="ipt_qtd_deposito">
+
+    <label for="ipt_valor_deposito">Valor do(s) depósito(s)?</label>
+    <input type="number" name="" id="ipt_valor_deposito">
+
+    <button onclick="acompanhar()">Acompanhar grana</button>
+
+    <div id="div_res"></div>
+</body>
+<script>
+    var grana = 0;
+
+    function acompanhar() {
+        var qtdDep = Number(ipt_qtd_deposito.value);
+        var valorDep = Number(ipt_valor_deposito.value);
+
+        for (var i = 1; i <= qtdDep; i++) {
+            grana += valorDep;
+
+            if (i % 3 == 0) {
+                grana *= 1.01;
+                div_res.innerHTML += `<span>${i}º Mês: R$${grana.toFixed(2)}</span><img style="width: 16px; height: 16px;" src="https://img.freepik.com/vetores-gratis/vetor-plano-estrela-basico_78370-1483.jpg" alt="Estrelinha"><br>`;
+            }else {
+                div_res.innerHTML += `${i}º Mês: R$${grana.toFixed(2)}<br>`;
+            }
+        }
+
+        div_res.innerHTML += `Total guardado: R$${grana.toFixed(2)}`;
+    }
+</script>
+
+</html>

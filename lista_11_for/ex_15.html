@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_qtd_xicaras">Quantas xícaras de café com leite você tomou na vida?</label>
+    <input type="number" name="" id="ipt_qtd_xicaras">
+
+    <button onclick="analisar()">ver a quantidade</button>
+
+    
+
+    
+
+    <div id="res"></div>
+</body>
+<script>
+    function analisar() {
+        var qtdXicaras = Number(ipt_qtd_xicaras.value);
+
+        for (var i = 1; i <= qtdXicaras; i++) {
+            res.innerHTML += `<img style="height: 100px; width: 100px;" src="https://minhasaude.proteste.org.br/wp-content/uploads/2023/06/colher-carregando-punhado-de-leite-em-po-sobre-fundo-branco.jpg" alt="Colher de leite em pó">`;
+
+            res.innerHTML += `<img style="height: 100px; width: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNdRNXjuCmyZznUVLK-cmynds5CJWp0B4U12ytqhbmW1DOnCBOGwUL-z9snMKF4t8_V5ISFrgdfZ2KSnEl5ACC2mNTpI7EqxM9C7YhK8UnpvDTWiIrv64c-inMYICXlabwrkpPGIVk6QkT/s640/blogger-image--1751233207.jpg" alt="Colher de café em pó">`;
+            res.innerHTML += `<img style="height: 100px; width: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNdRNXjuCmyZznUVLK-cmynds5CJWp0B4U12ytqhbmW1DOnCBOGwUL-z9snMKF4t8_V5ISFrgdfZ2KSnEl5ACC2mNTpI7EqxM9C7YhK8UnpvDTWiIrv64c-inMYICXlabwrkpPGIVk6QkT/s640/blogger-image--1751233207.jpg" alt="Colher de café em pó">`;
+        }
+    }
+</script>
+</html>
