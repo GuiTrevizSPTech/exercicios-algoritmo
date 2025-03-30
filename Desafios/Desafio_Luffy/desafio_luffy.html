@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_qtd_marinheiros">Quantidade de Marinheiros:</label>
+    <input type="number" id="ipt_qtd_marinheiros">
+
+    <label for="ipt_qtd_carne">Quantidade de Carne na Reserva:</label>
+    <input type="number" id="ipt_qtd_carne">
+
+    <label for="ipt_qtd_marinheiros">Quantidade de Batalha(s):</label>
+    <input type="number" id="ipt_qtd_batalha">
+
+    <button onclick="batalhar()">Batalhar!</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+
+    // cada marinheiro tira 5 pontos de energia do Luffy ao serem derrotados
+
+    // Na primeira batalha, o Luffy consegue derrotar todos os marinheiros ficando com 0 de energia. Quanto ele chega a 0, ele come a carne e recupera toda a energia, ou seja, ele comeu e recuperou tudo na primeira batalha. na segunda batalha, ele iniciou com 100, porém, a partir da segunda batalha ele começa perdendo 10 pontos de energia, caindo para 90 pontos. 
+
+    function batalhar() {
+        var qtdMarinheiro = Number(ipt_qtd_marinheiros.value);
+        var qtdCarne = Number(ipt_qtd_carne.value);
+        var qtdBatalha = Number(ipt_qtd_batalha.value);
+        var maxMarinheiros = (qtdMarinheiro * 5);
+
+        div_resposta.innerHTML +=
+            `
+                <p>--------------------------------------------------------</p>
+                <p>Quantidade de batalhas: ${qtdBatalha}</p>
+                <p>Quantidade de marinheiros ${qtdMarinheiro}</p>
+                <p>Quantidade de carne: ${qtdCarne}</p>
+                <p>--------------------------------------------------------</p>
+                <br>
+            `;
+
+        for (var i = 1; i <= qtdBatalha; i++) {
+            var energia = 100;
+            var sobraMarinheiros = 0;
+            var carneConsumo = 0;
+            var derrotados = 0;
+
+            if (i > 1) {
+                energia -= 10;
+            }
+
+            energia -= maxMarinheiros;
+
+            if (energia < 0) {
+                sobraMarinheiros = energia / 5;
+                derrotados = qtdMarinheiro;
+                derrotados += sobraMarinheiros;
+
+            } else {
+                derrotados = qtdMarinheiro;
+            }
+
+            if (energia <= 0 && qtdCarne > 0) {
+                carneConsumo += 1;
+                qtdCarne -= 1;
+            } else {
+                energia = 0;
+            }
+
+            if (derrotados == qtdMarinheiro) {
+                div_resposta.innerHTML +=
+                    `
+                        <p>${i}ª Batalha:</p>
+                        <p>Resultado: Luffy saiu vitorioso, comeu ${carneConsumo} carne(s), derrotou ${derrotados} marinheiro(s) e sobrou ${energia} pontos de energia</p>
+                        <p>--------------------------------------------------------</p>
+                        <br>
+                    `;
+            } else {
+                div_resposta.innerHTML +=
+                    `
+                        <p>${i}ª Batalha:</p>
+                        <p>Resultado: Luffy saiu derrotado, comeu ${carneConsumo} carne(s),derrotou ${derrotados} marinheiro(s) e sobrou ${energia} pontos de energia</p>
+                        <p>--------------------------------------------------------</p>
+                        <br>
+                    `;
+            }
+
+            // console.log(`Energia restante: ${energia}; Marinheiros derrotados: ${derrotados}; Carnes consumidas: ${carneConsumo}`);
+        }
+
+    }
+</script>
+
+</html>
