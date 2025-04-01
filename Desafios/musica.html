@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_qtd_musica">Qual a quantidade de músicas que você deseja ouvir?</label>
+    <input type="number" id="ipt_qtd_musica">
+
+    <button onclick="musica()">Começar o Show!</button>
+</body>
+<script>
+    function musica() {
+        var qtdMusica = Number(ipt_qtd_musica.value);
+        var like = 0;
+        var deslike = 0;
+        var tocadas = 0;
+
+        for (var i = 1; i <= qtdMusica; i++) {
+            var nomeMusica = prompt(`Digite o nome da ${i}ª música:`);
+            var satisfacao = prompt(`Você gosta da música "${nomeMusica}"? [S/N]`);
+
+            if (satisfacao == 'S') {
+                like++;
+            } else {
+                deslike++;
+            }
+
+            
+        }
+        console.log(like)
+    }
+</script>
+</html>
