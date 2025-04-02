@@ -6,31 +6,63 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Guilherme Trevizan & Rafael Mechi -->
     <label for="ipt_qtd_musica">Qual a quantidade de músicas que você deseja ouvir?</label>
     <input type="number" id="ipt_qtd_musica">
 
     <button onclick="musica()">Começar o Show!</button>
+
+    <div id="div_resposta"></div>
 </body>
 <script>
     function musica() {
         var qtdMusica = Number(ipt_qtd_musica.value);
+        var mensagem = '';
+        var musicas = '';
+        var ultimaMusica = '';
         var like = 0;
         var deslike = 0;
         var tocadas = 0;
 
+        // cadastro de todas as músicas
         for (var i = 1; i <= qtdMusica; i++) {
             var nomeMusica = prompt(`Digite o nome da ${i}ª música:`);
-            var satisfacao = prompt(`Você gosta da música "${nomeMusica}"? [S/N]`);
 
-            if (satisfacao == 'S') {
+            var novaMusica = nomeMusica
+            while (novaMusica == ultimaMusica) {
+                alert('Essa música acabou de tocar, escolha outra.');
+                novaMusica = prompt('Digite o nome da próxima música:');
+                nomeMusica = novaMusica
+            }
+
+            if (i == qtdMusica) {
+                musicas += `${nomeMusica}`;
+            } else {
+                musicas += `${nomeMusica} | `;
+            }
+
+            ultimaMusica = novaMusica
+
+            alert(`Tocando ${i}ª música: ${nomeMusica}`);
+
+            var satisfacao = prompt(`Você gosta da música "${nomeMusica}"? [Sim/Não]`).toLowerCase();
+            if (satisfacao == 'sim' || satisfacao == 's') {
                 like++;
             } else {
                 deslike++;
             }
 
-            
+
         }
-        console.log(like)
+
+        div_resposta.innerHTML = 
+        `
+            <h2>Resumo Final:</h2>
+            <p>Quais músicas foram tocadas: ${musicas}</p>
+            <p>Quantas músicas foram tocadas: ${qtdMusica}</p>
+            <p>Quantas músicas foram aprovadas (gostou): ${like}</p>
+            <p>Quantas músicas foram reprovadas (não gostou): ${deslike}</p>
+        `;
     }
 </script>
 </html>
