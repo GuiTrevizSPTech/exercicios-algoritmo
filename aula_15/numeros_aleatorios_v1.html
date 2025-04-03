@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" placeholder="Valor mínimo:" id="ipt_min">
+
+    <input type="number" placeholder="Valor máximo:" id="ipt_max">
+
+    <button onclick="aleatorio()">aleatório</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    // gera valores entre 0 e 1
+    // var numeroAleatorio = Math.random();
+    // console.log(`Aleatório: ${numeroAleatorio}`);
+
+    // var numeroAleatorioAte10 = Math.random() * 10;
+    // console.log(`Aleatório até 10: ${numeroAleatorioAte10}`);
+
+    // Desafio:
+    // Como gerar um aleatório com valor mínimo e máximo?
+    // Regras do desafio: Se não conseguir pensar em como fazer, pesquise na comunidade e não com IA generativa
+    // Você pode usar a solução da pesquisa, mas PRECISA entender. Vamos apresentar depois.
+
+    function aleatorio() {
+        var min = Number(ipt_min.value);
+        var max = Number(ipt_max.value);
+        var numAleatorio = Math.floor((Math.random() * (max - min + 1) + min));
+
+        
+            div_resposta.innerHTML = `<p style="font-size: 250px; text-align: center;">${numAleatorio}</p>`;
+    }
+
+
+</script>
+
+</html>

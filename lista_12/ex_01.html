@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sortear()">Sortear</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    function sortear() {
+        var sortear = Math.random().toFixed(2);
+        var mensagem = "";
+        div_resposta.innerHTML = mensagem;
+
+        div_resposta.innerHTML += `<h2>${sortear}</h2>`;
+
+        if (sortear > 0.5) {
+            mensagem = 'Eu arredondaria para 1'
+            div_resposta.innerHTML += mensagem;
+        } else {
+            mensagem = 'Eu arredondaria para 0'
+            div_resposta.innerHTML += mensagem;
+        }
+
+        
+    }
+</script>
+</html>
