@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <input type="text" placeholder="Nome do aluno:" id="ipt_nome_aluno">
+
+    <button onclick="sortearNota()">Sortear nota para aluno</button>
+
+    <p id="p_resposta"></p>
 </body>
+<script>
+    function sortearNota() {
+        var nomeAluno = ipt_nome_aluno.value;
+        var numAleatorio = Math.random();
+        var sorteado = (numAleatorio * (10 - 0) + 0).toFixed(1);
+
+        p_resposta.innerHTML = `Nota para ${nomeAluno}: ${sorteado}`;
+    }
+</script>
 </html>

@@ -5,7 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #div_resposta {
+        display: none;
+        height: 100px;
+        width: 100px;
+        background-color: black;
+        color: white;
+        font-size: 26px;
+        font-weight: 600;
+        
+    }
+</style>
 <body>
-    
+    <button onclick="jogar()">Jogar dado</button>
+
+    <div id="div_resposta"></div>
 </body>
+<script>
+    function jogar() {
+        var numAleatorio = Math.random();
+        var max = 20;
+        var min = 1;
+        var dado = (numAleatorio * (max - min) + min).toFixed();
+
+        if (dado >= 1 && dado <= 20) {
+            div_resposta.style.display = 'flex';
+            div_resposta.style.justifyContent = 'center';
+            div_resposta.style.alignItems = 'center';
+            div_resposta.innerHTML = `<p>${dado}</p>`;
+        } else {
+            alert(`Esse número não participa dessa brincadeira.`)
+        }
+    }
+</script>
 </html>

@@ -1,11 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    img {
+        height: 200px;
+    }
+</style>
+
 <body>
-    
+    <input type="text" placeholder="Player 1 name:" id="ipt_jogador_1">
+    <input type="text" placeholder="Player 2 name:" id="ipt_jogador_2">
+
+    <button onclick="jokenpo()">jogar</button>
+    <div class="batalha">
+        <div id="div_respostaP1"></div>
+        <div id="div_respostaP2"></div>
+        <div id="div_resultado"></div>
+    </div>
+
 </body>
+<script>
+    var vitoriasP1 = 0;
+    var vitoriasP2 = 0;
+
+    function jokenpo() {
+        var player1 = ipt_jogador_1.value;
+        var player2 = ipt_jogador_2.value;
+        var pedra = 'https://a-static.mlcdn.com.br/800x560/pedra-geodo-ametista-paz-protecao-bruta-1858kg-usconnect/usconnectdigital/amet21148/a8438e29234002f7494777dbf7ef37ba.jpeg';
+        var papel = 'https://images.tcdn.com.br/img/img_prod/1041864/500_folhas_papel_foto_glossy_brilhante_a4_115g_359399_1_f27f374550ddb6730fb770b04ff81856.jpg';
+        var tesoura = 'https://static.lojabrafer.com.br/public/brafer/imagens/produtos/tesoura-para-costura-inox-8-pol-cabo-confortavel-tramontina-65976.jpg';
+        var numAleatorioP1 = Math.random();
+        var sorteadoP1 = (numAleatorioP1 * (3 - 1) + 1).toFixed();
+        var numAleatorioP2 = Math.random();
+        var sorteadoP2 = (numAleatorioP2 * (3 - 1) + 1).toFixed();
+        mensagem = ``;
+
+        if (sorteadoP1 == 1) {
+            mensagem =
+            `
+            <p><b>${player1}</b> jogou pedra</p>
+            <img src="${pedra}" alt="Imagem de uma pedra">
+            `;
+            div_respostaP1.innerHTML = mensagem;
+
+            if (sorteadoP2 == 1) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou pedra</p>
+                <img src="${pedra}" alt="Imagem de uma pedra">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                div_resultado.innerHTML = `<h2>EMPATE!</h2>`;
+
+            } else if (sorteadoP2 == 2) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou papel</p>
+                <img src="${papel}" alt="Imagem de um papel">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP2++;
+                div_resultado.innerHTML = `<h2>${player2} GANHOU!</h2>`;
+
+
+            } else {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou tesoura</p>
+                <img src="${tesoura}" alt="Imagem de um tesoura">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP1++;
+                div_resultado.innerHTML = `<h2>${player1} GANHOU!</h2>`;
+
+            }
+
+        } else if (sorteadoP1 == 2) {
+            mensagem =
+            `
+            <p><b>${player1}</b> jogou papel</p>
+            <img src="${papel}" alt="Imagem de um papel">
+            `;
+            div_respostaP1.innerHTML = mensagem;
+
+            if (sorteadoP2 == 1) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou pedra</p>
+                <img src="${pedra}" alt="Imagem de uma pedra">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP1++;
+                div_resultado.innerHTML = `<h2>${player1} GANHOU!</h2>`;
+
+            } else if (sorteadoP2 == 2) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou papel</p>
+                <img src="${papel}" alt="Imagem de um papel">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                div_resultado.innerHTML = `<h2>EMPATE!</h2>`;
+
+            } else {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou tesoura</p>
+                <img src="${tesoura}" alt="Imagem de um tesoura">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP2++;
+                div_resultado.innerHTML = `<h2>${player2} GANHOU!</h2>`;
+            }
+
+        } else {
+            mensagem =
+            `
+            <p><b>${player1}</b> jogou tesoura</p>
+            <img src="${tesoura}" alt="Imagem de uma tesoura">
+            `;
+            div_respostaP1.innerHTML = mensagem;
+
+            if (sorteadoP2 == 1) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou pedra</p>
+                <img src="${pedra}" alt="Imagem de uma pedra">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP2++;
+                div_resultado.innerHTML = `<h2>${player2} GANHOU!</h2>`;
+
+            } else if (sorteadoP2 == 2) {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou papel</p>
+                <img src="${papel}" alt="Imagem de um papel">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+                vitoriasP1++;
+                div_resultado.innerHTML = `<h2>${player1} GANHOU!</h2>`;
+
+            } else {
+                mensagem =
+                `
+                <p><b>${player2}</b> jogou tesoura</p>
+                <img src="${tesoura}" alt="Imagem de um tesoura">
+                `;
+                div_respostaP2.innerHTML = mensagem;
+
+                div_resultado.innerHTML = `<h2>EMPATE!</h2>`;
+            }
+
+        }
+
+        div_resultado.innerHTML +=
+        `
+        <p>${player1}: ${vitoriasP1} vitória(s)</p>
+        <p>${player2}: ${vitoriasP2} vitória(s)</p>
+        `;
+
+    }
+</script>
+
 </html>

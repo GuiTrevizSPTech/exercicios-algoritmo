@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    img {
+        height: 150px;
+    }
+</style>
 <body>
     <button onclick="sortear()">Sortear Time</button>
+
+    <div id="div_resposta"></div>
+    
 </body>
 <script>
-    
+    function sortear() {
+        var sao = 'https://images.seeklogo.com/logo-png/12/1/sao-paulo-futebol-clube-logo-png_seeklogo-122586.png';
+        var cor = 'https://images.seeklogo.com/logo-png/3/1/corinthians-brasao-logo-png_seeklogo-35532.png';
+        var pal = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/2048px-Palmeiras_logo.svg.png';
+        var san = 'https://images.seeklogo.com/logo-png/12/2/santos-futebol-clube-de-alegrete-rs-logo-png_seeklogo-122512.png';
+        var numAleatorio = Math.random();
+        var sorteador = (numAleatorio * (4 - 1) + 1).toFixed();
+
+        console.log(sorteador);
+
+        if (sorteador == 1) {
+            div_resposta.innerHTML = `<img src="${sao}" alt="Logo Do São Paulo">`;
+        } else if (sorteador == 2) {
+            div_resposta.innerHTML = `<img src="${cor}" alt="Logo do Corinthians">`;
+        } else if (sorteador == 3){
+            div_resposta.innerHTML = `<img src="${pal}" alt="Logo do Palmeiras">`;
+        } else {
+            div_resposta.innerHTML = `<img src="${san}" alt="Logo do Santos">`;
+        }
+    }
 </script>
 </html>
