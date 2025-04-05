@@ -6,6 +6,46 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="gerarNota()">Gerar uma nota de aluno entre 0 e 10</button>
+
+    <button onclick="gerarFrequencia()">Gerar uma frequência de aluno entre 0 e 100</button>
     
+    <div id="div_resposta"></div>
+
+    <button onclick="situacao()">Ver situação</button>
 </body>
+<script>
+    var guardaNota = ``;
+    var guardaFreq = ``;
+
+    function gerarNota() {
+        var notaAleatoria = Math.random();
+        var sorteioNota = (notaAleatoria * (10 - 0) + 0).toFixed(2);
+        var mensagemNota = ``;
+
+        mensagemNota = `<p>Nota do aluno: ${sorteioNota}</p>`;
+        guardaNota = mensagemNota;
+        div_resposta.innerHTML += mensagemNota;
+    }
+
+    function gerarFrequencia() {
+        var freqAleatoria = Math.random();
+        var sorteioFreq = (freqAleatoria * (100 - 0) + 0).toFixed(2);
+        var mensagemFreq = ``;
+
+        mensagemFreq = `<p>Frequência do aluno: ${sorteioFreq}%</p>`;
+        guardaFreq = mensagemFreq
+        div_resposta.innerHTML += mensagemFreq;
+    }
+
+    function situacao() {
+        var nota = guardaNota.replace('<p>', '');
+        nota = nota.replace('</p>', '');
+
+        var frequencia = guardaFreq.replace('<p>', '');
+        frequencia = frequencia.replace('</p>', '');
+
+        alert(`${nota} & ${frequencia}`);
+    }
+</script>
 </html>

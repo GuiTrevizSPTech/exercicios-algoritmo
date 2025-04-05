@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <button onclick="sortear()">Sortear momento do dia</button>
+
+    <div id="div_resposta"></div>
 </body>
+<script>
+    function sortear() {
+        var numAleatorio = Math.random();
+        var sorteio = (numAleatorio * (23 - 0) + 0).toFixed();
+
+        if (sorteio >= 0 && sorteio <= 11) {
+            div_resposta.innerHTML = `Bom dia, flor do dia, são ${sorteio}h!`;
+        } else if (sorteio >= 12 && sorteio <= 17) {
+            div_resposta.innerHTML = `Boa tarde, já vai tarde, são ${sorteio}h!`;
+        } else {
+            div_resposta.innerHTML = `Boa noite, durma bem, são ${sorteio}h!`;
+        }
+    }
+</script>
 </html>
