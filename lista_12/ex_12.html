@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        height: 200px;
+    }
+</style>
+
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <button onclick="media()">Verificar média</button>
+
+    <div id="div_resposta"></div>
+
+</body>
+<script>
+    function avaliar() {
+        var avalAleatoria = Math.random();
+        var sorteioAval = (avalAleatoria * (5 - 0) + 0).toFixed(1);
+        var mensagem = ``;
+
+        var emojiMuitoTriste = 'https://png.pngtree.com/png-clipart/20240721/original/pngtree-very-sad-crying-emojis-png-image_15604399.png';
+        var emojiMeioTriste = 'https://i.pinimg.com/originals/e7/ea/e8/e7eae8b25558898ce6a7449115126d7a.jpg';
+        var emojiNeutro = 'https://images.emojiterra.com/google/android-10/512px/1f610.png';
+        var emojiFeliz = 'https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f60a.gif';
+        var emojiMuitoFeliz = 'https://png.pngtree.com/png-clipart/20230810/original/pngtree-happy-emoji-emoticon-showing-double-thumbs-up-like-picture-image_7851906.png';
+
+        mensagem = `<h2>Nota recebida: ${sorteioAval}</h2>`;
+        div_resposta.innerHTML = mensagem
+
+        if (sorteioAval >= 0 && sorteioAval <= 0.5) {
+            mensagem += `<img src="${emojiMuitoTriste}" alt="Emoji muito triste">`
+            div_resposta.innerHTML = mensagem;
+        } else if (sorteioAval > 0.5 && sorteioAval <= 1.5) {
+            mensagem += `<img src="${emojiMeioTriste}" alt="Emoji triste">`;
+            div_resposta.innerHTML = mensagem;
+        } else if (sorteioAval > 1.5 && sorteioAval <= 3.5) {
+            mensagem += `<img src="${emojiNeutro}" alt="Emoji neutro">`;
+            div_resposta.innerHTML = mensagem;
+        } else if (sorteioAval > 3.5 && sorteioAval <= 4.5) {
+            mensagem += `<img src="${emojiFeliz}" alt="Emoji feliz">`;
+            div_resposta.innerHTML = mensagem;
+        } else {
+            mensagem += `<img src="${emojiMuitoFeliz}" alt="Emojimuito feliz">`;
+            div_resposta.innerHTML = mensagem;
+        }
+
+    }
+
+    function media() {
+
+    }
+</script>
+
+</html>

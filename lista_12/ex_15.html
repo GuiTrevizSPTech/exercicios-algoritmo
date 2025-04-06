@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p_par">Números pares: 0</p>
+    <p id="p_impar">Números ímpares: 0</p>
+
+    <button onclick="sorteio()">Sortear número</button>
+
+    <p id="p_resposta"></p>
+</body>
+<script>
+    var par = 0;
+    var impar = 0;
+    
+    function sorteio() {
+        var numAleatorio = Math.random();
+        var numero = (numAleatorio * ((-9) - (-30)) + (-30)).toFixed();
+
+        p_resposta.innerHTML = `Número sorteado: ${numero}`;
+
+        if (numero % 2 == 0) {
+            par++;
+            p_par.innerHTML = `Números pares: ${par}`;
+        } else {
+            impar++;
+            p_impar.innerHTML = `Números ímpares: ${impar}`;
+        }
+    }
+</script>
+</html>

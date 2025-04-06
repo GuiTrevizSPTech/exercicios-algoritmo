@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="dado1()">Dado jogador 1</button>
+    <button onclick="dado2()">Dado jogador 2</button>
+
+    <button onclick="comparar()">Comparar resultados</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    var player1 = 0;
+    var player2 = 0;
+
+    function dado1() {
+        var dadoAleatorio1 = Math.random();
+        var sorteioDado1 = (dadoAleatorio1 * (6 - 1) + 1).toFixed();
+
+        player1 = sorteioDado1;
+        console.log(player1);
+    }
+
+    function dado2() {
+        var dadoAleatorio2 = Math.random();
+        var sorteioDado2 = (dadoAleatorio2 * (6 - 1) + 1).toFixed();
+
+        player2 = sorteioDado2;
+        console.log(player2);
+    }
+
+    function comparar() {
+        var mensagem = ``;
+
+        if (player1 > player2) {
+            mensagem = `player1 ganhou!`
+            div_resposta.innerHTML = mensagem;
+
+        } else if (player2 > player1) {
+            mensagem = `player2 ganhou!`
+            div_resposta.innerHTML = mensagem;
+
+        } else {
+            mensagem = `EMPATE!`
+            div_resposta.innerHTML = mensagem;
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        height: 200px;
+    }
+</style>
+<body>
+    <button onclick="fasesLua()">Ver a Lua</button>
+
+    <div id="div_resposta"></div>
+    
+</body>
+<script>
+    function fasesLua() {
+        var diaAleatorio = Math.random();
+        var dia = (diaAleatorio * (31 - 1) + 1).toFixed();
+
+        var nova = 'https://s.calendarr.com/upload/articles/lu/an/lua-nova_f_bra_l.jpg?class=ogImageSquare';
+        var cheia = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/2011-03-19_Superl%C3%BAa.jpg/220px-2011-03-19_Superl%C3%BAa.jpg';
+        var minguante = 'https://img.odcdn.com.br/cdn-cgi/image/width=960,height=1200,fit=cover/wp-content/uploads/2024/06/shutterstock_2420376307.jpg';
+        var crescente = 'https://s.calendarr.com/upload/articles/lu/ac/lua-crescente_f_bra_l.jpg';
+
+        var mensagem = ``;
+
+        mensagem = `<p>Dia do mês: ${dia}</p>`;
+        div_resposta.innerHTML = mensagem;
+
+        if (dia >= 1 && dia <= 7) {
+            mensagem += `<img src="${nova}" alt="">`;
+            div_resposta.innerHTML = mensagem;
+        } else if (dia >= 8 && dia <= 16) {
+            mensagem += `<img src="${cheia}" alt="">`;
+            div_resposta.innerHTML = mensagem;
+        } else if (dia >= 17 && dia <= 22) {
+            mensagem += `<img src="${minguante}" alt="">`;
+            div_resposta.innerHTML = mensagem;
+        }else {
+            mensagem += `<img src="${crescente}" alt="">`;
+            div_resposta.innerHTML = mensagem;
+        }
+    }
+</script>
+</html>

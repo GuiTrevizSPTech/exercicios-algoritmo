@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Digite seu nome:" id="ipt_nome_usuario">
+    <input type="text" placeholder="1ºN da sorte:" id="ipt_numero_sorte1">
+    <input type="text" placeholder="2ºN da sorte:" id="ipt_numero_sorte2">
+    <input type="text" placeholder="3ºN da sorte:" id="ipt_numero_sorte3">
+
+
+    <button onclick="sortear()">Sortear</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    var qtdSorteios = 0;
+
+    function sortear() {
+        var nome = ipt_nome_usuario.value;
+        var numero1 = Number(ipt_numero_sorte1.value).toFixed();
+        var numero2 = Number(ipt_numero_sorte2.value).toFixed();
+        var numero3 = Number(ipt_numero_sorte3.value).toFixed();
+
+
+        if ((numero1 >= 1 && numero1 <= 100) && (numero2 >= 1 && numero2 <= 100) && (numero3 >= 1 && numero3 <= 100)) {
+            var numAleatorio = Math.random();
+            var numeroSorteado = (numAleatorio * (100 - 1) + 1).toFixed();
+            var mensagem = ``;
+
+            mensagem = `<p>${numeroSorteado}</p>`;
+            div_resposta.innerHTML = mensagem;
+
+            if (numeroSorteado == numero1) {
+                qtdSorteios++;
+                mensagem += `<p>Parabéns, ${nome}! O seu número: ${numero1}, foi sorteado após ${qtdSorteios} sorteios!</p>`;
+                div_resposta.innerHTML = mensagem;
+                qtdSorteios = 0;
+            } else if (numeroSorteado == numero2) {
+                qtdSorteios++;
+                mensagem += `<p>Parabéns, ${nome}! O seu número: ${numero2}, foi sorteado após ${qtdSorteios} sorteios!</p>`;
+                div_resposta.innerHTML = mensagem;
+                qtdSorteios = 0;
+            } else if (numeroSorteado == numero3) {
+                qtdSorteios++;
+                mensagem += `<p>Parabéns, ${nome}! O seu número: ${numero3}, foi sorteado após ${qtdSorteios} sorteios!</p>`;
+                div_resposta.innerHTML = mensagem;
+                qtdSorteios = 0;
+            } else {
+                qtdSorteios++;
+            }
+        } else {
+            alert('Digite um número entre 1 e 100.');
+        }
+    }
+</script>
+
+</html>
