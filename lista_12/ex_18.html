@@ -11,12 +11,14 @@
     <p id="p_empate">Empate: 0</p>
 
     <button onclick="jogar()">Jogar</button>
+
+    <div id="div_resposta"></div>
 </body>
 <script>
     var player1 = 0;
     var player2 = 0;
     var empate = 0;
-    
+
     function jogar() {
         var numeroAleatorio1 = Math.random();
         var numeroP1 = (numeroAleatorio1 * (6 - 1) + 1);
@@ -25,9 +27,20 @@
         var numeroP2 = (numeroAleatorio2 * (6 - 1) + 1);
 
         if (numeroP1 > numeroP2) {
-            
+            player1++;
+            p_player1.innerHTML = `Jogador 1: ${player1}`;
+
+            div_resposta.innerHTML = `O Jogador 1 está vencendo!`;
+        } else if (numeroP2 > numeroP1) {
+            player2++;
+            p_player2.innerHTML = `Jogador 2: ${player2}`;
+
+            div_resposta.innerHTML = `O Jogador 2 está vencendo!`;
         } else {
-            
+            empate++;
+            p_empate.innerHTML = `Empate: ${empate}`;
+
+            div_resposta.innerHTML = `O jogo está empatado!`;
         }
     }
 </script>
