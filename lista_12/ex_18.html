@@ -7,7 +7,7 @@
 </head>
 <body>
     <p id="p_player1">Jogador 1: 0</p>
-    <p id="p_player2">Jogador 1: 0</p>
+    <p id="p_player2">Jogador 2: 0</p>
     <p id="p_empate">Empate: 0</p>
 
     <button onclick="jogar()">Jogar</button>
@@ -21,10 +21,13 @@
 
     function jogar() {
         var numeroAleatorio1 = Math.random();
-        var numeroP1 = (numeroAleatorio1 * (6 - 1) + 1);
+        var numeroP1 = (numeroAleatorio1 * (6 - 1) + 1).toFixed();
 
         var numeroAleatorio2 = Math.random();
-        var numeroP2 = (numeroAleatorio2 * (6 - 1) + 1);
+        var numeroP2 = (numeroAleatorio2 * (6 - 1) + 1).toFixed();
+
+        console.log(numeroP1);
+        console.log(numeroP2);
 
         if (numeroP1 > numeroP2) {
             player1++;
