@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Nº entre 10 e 500" id="ipt_numero_usuario">
+
+    <button onclick="somarPares()">Somar pares</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    function somarPares() {
+        var numeroUsuario = Number(ipt_numero_usuario.value);
+        var soma = 0;
+        var mensagem = ``;
+
+        div_resposta.innerHTML = mensagem;
+
+        if (numeroUsuario >= 10 && numeroUsuario <= 500) {
+            for (var i = 0; i <= numeroUsuario; i++) {
+                if (i % 2 == 0) {
+                    mensagem += `<p>${i}</p>`
+                    div_resposta.innerHTML = mensagem;
+                    soma += i;
+                }
+                
+            }
+
+            mensagem += `<h2>Soma dos pares: ${soma}</h2>`;
+            div_resposta.innerHTML = mensagem;
+
+        } else {
+            alert("Número inválido");
+        }
+    }
+</script>
+</html>

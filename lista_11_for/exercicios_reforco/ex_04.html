@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Digite um Nº positivo:" id="ipt_numero_usuario">
+    <input type="number" placeholder="Nº entre 1 e o número anterior" id="ipt_numero_divisibilidade">
+
+    <button onclick="somatoria()">Somar números</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    function somatoria() {
+        var numeroUsuario = Number(ipt_numero_usuario.value);
+        var divisibilidade = Number(ipt_numero_divisibilidade.value);
+        var soma = 0;
+        var mensagem = ``;
+
+        div_resposta.innerHTML = mensagem;
+
+        if (numeroUsuario > 0 || (divisibilidade >= 1 && divisibilidade <= numeroUsuario)) {
+            for (var i = 1; i <= numeroUsuario; i++) {
+                if (i % divisibilidade == 0) {
+                    mensagem += `<p>${i}</p>`;
+                    div_resposta.innerHTML = mensagem;
+                    soma += i;
+                }
+                
+            }
+
+            mensagem += `<h2>Soma dos Múltiplos: ${soma}</h2>`;
+            div_resposta.innerHTML = mensagem;
+        } else {
+            alert(`Ops... Há alguma informação errada.`);
+        }
+    }
+</script>
+</html>

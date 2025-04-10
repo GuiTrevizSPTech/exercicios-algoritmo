@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" placeholder="Defina um limite inferior" id="ipt_limite_inferior">
+    <input type="number" placeholder="Defina um limite superior" id="ipt_limite_superior">
+    <input type="number" placeholder="Defina um número divisor" id="ipt_divisibilidade">
+
+    <button onclick="contar()">Contar</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+
+    function contar() {
+        var limiteInferior = Number(ipt_limite_inferior.value);
+        var limiteSuperior = Number(ipt_limite_superior.value);
+        var divisibilidade = Number(ipt_divisibilidade.value);
+        var mensagem = ``;
+
+        var count = 0;
+        var soma = 0;
+        var media = 0;
+        var numeroMaior = 0;
+
+        // poderia definir null
+        var numeroMenor = 0;
+        var primeiraVez = true;
+
+        div_resposta.innerHTML = mensagem;
+
+        if (limiteInferior > 1 && limiteInferior < limiteSuperior) {
+            if (limiteSuperior < 100 && limiteSuperior > limiteInferior) {
+                if (divisibilidade >= 3 && divisibilidade <= 10) {
+                    for (var i = limiteInferior; i <= limiteSuperior; i++) {
+                        if (i % divisibilidade == 0) {
+                            count++;
+                            soma += i;
+                            
+                            mensagem += `<label>${i}, </label>`;
+                            div_resposta.innerHTML = mensagem;
+
+                            if (i > numeroMaior) {
+                                numeroMaior = i;
+                            }
+
+                            if (primeiraVez) {
+                                numeroMenor = i;
+                                primeiraVez = false;
+                            }
+
+                            // if (numeroMenor == 0) {
+                            //     numeroMenor = i
+                            // }
+                            
+                        }
+                        
+                    }
+                    media = (soma / count).toFixed(2);
+                    mensagem += 
+                    `<p>QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${count}</p>
+                    <p>SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${soma}</p>
+                    <p>MÉDIA DOS NÚMEROS EXIBIDOS: ${media}</p>
+                    <p>MAIOR NÚMERO EXIBIDO: ${numeroMaior}</p>
+                    <p>MENOR NÚMERO EXIBIDO: ${numeroMenor}</p>`;
+                    div_resposta.innerHTML = mensagem;
+                } else {
+                    alert(`O número para efetuar a divisão deve estar entre 3 e 10.`);
+                }
+            } else {
+                alert(`O limite superior deve estar abaixo de 100 e maior que o limite inferior.`);
+            }
+        } else {
+            alert(`O limite inferior deve estar acima de 1 e menor que o limite superior.`);
+        }
+    }
+
+</script>
+
+</html>

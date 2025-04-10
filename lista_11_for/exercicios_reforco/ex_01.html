@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Nº de 0 a 100" id="ipt_num_usuario">
+
+    <button onclick="divisores()">Ver divisores</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    function divisores() {
+        var numeroUsuario = Number(ipt_num_usuario.value);
+        var mensagem = ``;
+
+        div_resposta.innerHTML = mensagem;
+
+        if (numeroUsuario >= 0 && numeroUsuario <= 100) {
+            for (var i = 0; i <= numeroUsuario; i++) {
+                if (numeroUsuario % i == 0) {
+                    mensagem += `<p>${i}</p>`; 
+                    div_resposta.innerHTML = mensagem;
+                }
+                
+            }
+        } else {
+            alert(`O número ${numeroUsuario} é inválido.`);
+        }
+    }
+</script>
+</html>
