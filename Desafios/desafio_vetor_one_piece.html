@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_comida">Digite uma comida: </label>
+    <input type="text" id="ipt_comida">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="verificar()">Verificar quantidade</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <button onclick="exibirEstoque()">Exibir estoque</button>
+    <br>
+    <label for="ipt_nome_atual">Nome da comida atual: </label>
+    <input type="text" id="ipt_nome_atual">
+    <label for="ipt_nome_novo">Nome novo da comida: </label>
+    <input type="text" id="ipt_nome_novo">
+    <button onclick="alterar()">Alterar nome</button>
+    <br>
+    <label for="ipt_nome_deletar">Insira uma comida para deletar: </label>
+    <input type="text" id="ipt_nome_deletar">
+    <button onclick="remover()">Remover comida</button>
+
+    <div id="div_mensagem"></div>
+</body>
+<script>
+    let comidas = []
+    let mensagem = ``;
+
+    function cadastrar() {
+        let comidaDigitada = ipt_comida.value;
+
+        if (comidaDigitada == "") {
+            alert('Você precisa digitar uma comida para estocar.');
+            return;
+        }
+
+        comidas.push(comidaDigitada);
+        mensagem = `Comida ${comidaDigitada} adicionada ao estoque.`;
+    }
+
+    function verificar() {
+        if (comidas.length < 3) {
+            mensagem = "Desse jeito, o Luffy devora até o navio"
+        } else if (comidas.length >= 3 && comidas.length <= 7) {
+            mensagem = "O comilão do Luffy não vai deixar sobrar nenhuma comida"
+        } else if (comidas.length >= 8 && comidas.length <= 10) {
+            mensagem = "Assim, talvez sobre um pouco para a tripulação"
+        } else {
+            mensagem = "Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!"
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function pesquisar() {
+        let comidaDigitada = ipt_comida.value;
+        let count = 0;
+
+        for (let i = 0; i < comidas.length; i++) {
+            if (comidas[i] == comidaDigitada) {
+                count++
+                mensagem = `Temos a comida ${comidas[i]} e há ${count} unidade(s) dela`;
+            }
+        }
+
+        if (count == 0) {
+            alert(`Alguém vai ter que comprar ${comidaDigitada}, tá fazendo falta...`);
+        }
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+    function exibirEstoque() {
+        mensagem = ``;
+
+        let comidaSemRepeticao = [];
+        let quantidades = [];
+
+        for (let i = 0; i < comidas.length; i++) {
+            let comidaAtual = comidas[i];
+            let encontrada = false;
+
+            for (let j = 0; j < comidaSemRepeticao.length; j++) {
+                if (comidaSemRepeticao[j] === comidaAtual) {
+                    quantidades[j]++;
+                    encontrada = true;
+                    break;
+                }
+            }
+
+            if (!encontrada) {
+                comidaSemRepeticao.push(comidaAtual);
+                quantidades.push(1);
+            }
+        }
+
+        for (let i = 0; i < comidaSemRepeticao.length; i++) {
+            if (quantidades[i] == 1) {
+                mensagem += `<p>- ${comidaSemRepeticao[i]} (${quantidades[i]} unidade)</p>`;
+            } else {
+                mensagem += `<p>- ${comidaSemRepeticao[i]} (${quantidades[i]} unidades)</p>`;
+            }
+
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+
+    // b) Tenha um botão "Exibir Estoque":
+
+    // Ao clicar nele exiba na tela todas as comidas cadastradas no estoque e a quantidade que tem de cada comida, conforme o exemplo abaixo:
+    //         - Arroz de Polvo (5 unidades)
+    //         - Ceviche de frutos do mar (1 unidade)
+    //         - ...
+
+    // OBS: Note que se houver apenas uma unidade da comida, deve aparecer na exibição a palavra "unidade" no singular e se tiver mais de uma a palavra fica no plural.
+
+    function alterar() {
+        let nomeAtual = ipt_nome_atual.value
+        let nomeNovo = ipt_nome_novo.value
+        let count = 0;
+
+        if (nomeAtual == "" || nomeNovo == "") {
+            alert("Você precisa digitar nos dois campos para poder alterar o nome.");
+            return;
+        }
+
+
+
+        for (let i = 0; i < comidas.length; i++) {
+            if (nomeAtual == comidas[i]) {
+                count++
+                comidas[i] = nomeAtual;
+                mensage = `A comida ${nomeAtual} foi alterada para ${nomeNovo}`;
+            }
+
+        }
+
+        if (count == 0) {
+            alert(`A comida ${nomeAtual} não foi encontrada no estoque.`);
+            return;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function remover() {
+        let comidaDeletar = ipt_nome_deletar.value;
+
+        for (let i = 0; i < comidas.length; i++) {
+            if (comidaDeletar == comidas[i]) {
+                count++;
+                comidas.splice(i, 1);
+                mensage = `A comida ${comidaDeletar} foi removida do estoque.`;
+            }
+        }
+
+        if (count == 0) {
+            alert(`A comida ${comidaDeletar} não está no estoque.`);
+            return;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>
+
+
+</html>
